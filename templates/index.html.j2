@@ -80,19 +80,19 @@
     {% endfor %}
 
     <!-- Pagination -->
-    <div class="flex justify-between items-center mt-10 text-sm">
+    <div class="flex justify-between mt-8 text-sm">
       {% if current_page > 1 %}
-        <a href="{{ 'index.html' if current_page == 2 else '/page/' ~ (current_page - 1) ~ '.html' }}"
-           class="text-indigo-400 hover:underline">← Previous</a>
+        <a href="{{ 'index.html' if current_page == 2 else 'page/' ~ (current_page - 1) ~ '.html' }}"
+          class="text-indigo-400 hover:underline">← Previous</a>
       {% else %}
-        <span class="invisible">← Previous</span>
+        <span></span>
       {% endif %}
 
       {% if current_page < total_pages %}
-        <a href="/page/{{ current_page + 1 }}.html" class="text-indigo-400 hover:underline">Next →</a>
+        <a href="page/{{ current_page + 1 }}.html" class="text-indigo-400 hover:underline">Next →</a>
       {% endif %}
     </div>
-  </div>
+
 
 </body>
 </html>
