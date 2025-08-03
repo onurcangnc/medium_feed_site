@@ -1,5 +1,6 @@
 import os
 import math
+import shutil
 import feedparser
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -47,6 +48,14 @@ def generate_pages(entries):
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(html)
 
+# static klasörünü output içine kopyala
+def copy_static_files():
+    static_src = "static"
+    static_dst = os.path.join(OUTPUT_DIR, "static")
+    if os.path.exists(static_src):
+        shutil.copytree(static_src, static_dst, dirs_exist_ok=True)
+
 if __name__ == "__main__":
     entries = fetch_entries()
     generate_pages(entries)
+    copy_static_files()
