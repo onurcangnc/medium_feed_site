@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site_title }}</title>
 
+  <!-- SEO Meta -->
   <meta name="description" content="Brief descriptions of Onurcan Genç's Medium articles." />
-  <meta name="robots" content="index, follow" />
   <meta property="og:title" content="{{ site_title }}">
   <meta property="og:description" content="Summaries of Onurcan Genç's latest Medium blog posts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://writeup.onurcangenc.com.tr/">
   <meta property="og:image" content="https://writeup.onurcangenc.com.tr/preview.jpg">
 
-  <!-- Tailwind + Fonts -->
+  <!-- Styles & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #0f172a;
+      background: #0f172a;
+      min-height: 100vh;
+      overflow-x: hidden;
       position: relative;
     }
-    canvas#stars {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
+    .star {
+      position: absolute;
+      top: -20px;
+      color: #fff;
+      animation: animate 5s linear forwards;
+    }
+    .star::before {
+      content: "\f005";
+      font-family: FontAwesome;
+      text-shadow: 0 0 5px #fff, 0 0 20px #fff, 0 0 50px #fff;
+    }
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
     }
     .profile-pic {
       width: 100px;
@@ -40,61 +65,53 @@
     .social-icons a {
       margin: 0 10px;
       color: #3b82f6;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       transition: color 0.3s;
     }
     .social-icons a:hover {
       color: #60a5fa;
     }
   </style>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
-<body class="text-gray-100 leading-normal tracking-normal">
+<body class="text-gray-100">
 
-  <!-- Stars Background -->
-  <canvas id="stars" class="w-full h-full"></canvas>
+  <!-- Falling stars -->
+  <script>
+    function stars() {
+      const e = document.createElement("div");
+      e.setAttribute("class", "star");
+      document.body.appendChild(e);
+      e.style.left = Math.random() * window.innerWidth + "px";
+      const size = Math.random() * 12;
+      const duration = 2 + Math.random() * 3;
+      e.style.fontSize = 12 + "px";
+      e.style.animationDuration = duration + "s";
+      setTimeout(() => e.remove(), 5000);
+    }
+    setInterval(stars, 80); // Limit frequency for performance
+  </script>
 
-  <div class="max-w-3xl mx-auto p-6">
-    <!-- Header Section -->
+  <div class="max-w-3xl mx-auto p-6 relative z-10">
     <div class="bg-gray-900 p-6 rounded-xl shadow text-center mb-10">
-      <img src="/static/profile.jpg" alt="Onurcan Genç" class="profile-pic mx-auto mb-4">
+      <img src="/static/profile.png" alt="Onurcan Genç" class="profile-pic mx-auto mb-4">
       <h1 class="text-3xl font-bold text-indigo-400">Onurcan Genç</h1>
       <p class="text-gray-400 mt-2">Cybersecurity | Penetration Testing | Medium Blogger</p>
       <div class="social-icons flex justify-center mt-4">
-        <a href="https://linkedin.com/in/onurcangenc" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://twitter.com/onurcangenc" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/onurcangnc/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://x.com/onurcangenc1999" target="_blank"><i class="fab fa-twitter"></i></a>
         <a href="https://github.com/onurcangnc" target="_blank"><i class="fab fa-github"></i></a>
       </div>
     </div>
 
-    <!-- Blog Posts -->
     {% for post in posts %}
-      <div class="bg-gray-800 p-6 rounded-xl mb-8 shadow hover:shadow-2xl transition border border-gray-700">
-        <h2 class="text-2xl font-semibold mb-1 text-white">{{ post.title }}</h2>
+      <div class="bg-gray-800 p-6 rounded-xl mb-8 shadow hover:shadow-2xl border border-gray-700">
+        <h2 class="text-2xl font-semibold text-white mb-1">{{ post.title }}</h2>
         <p class="text-sm text-gray-400">{{ post.published }}</p>
         <p class="mt-2 text-gray-300">{{ post.summary | striptags }}</p>
         <a href="{{ post.link }}" target="_blank" class="text-indigo-400 hover:underline inline-block mt-3">Medium'da oku →</a>
       </div>
-
-      {% if loop.index % 3 == 0 %}
-        <!-- Google AdSense Banner -->
-        <div class="my-8" role="complementary" aria-label="Advertisement">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-XXXXXXXXXXXX"
-               data-ad-slot="1234567890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      {% endif %}
     {% endfor %}
 
-    <!-- Pagination -->
     <div class="flex justify-between mt-10 text-sm">
       {% if current_page > 1 %}
         <a href="{{ '/' if current_page == 2 else '/page/' ~ (current_page - 1) ~ '.html' }}" class="text-indigo-400 hover:underline">← Previous</a>
@@ -107,52 +124,5 @@
       {% endif %}
     </div>
   </div>
-
-  <!-- Star Background Script -->
-  <script>
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    function createStars() {
-      stars = [];
-      for (let i = 0; i < 100; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.5,
-          o: Math.random()
-        });
-      }
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'white';
-      stars.forEach(star => {
-        ctx.globalAlpha = star.o;
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      ctx.globalAlpha = 1;
-    }
-
-    function animateStars() {
-      drawStars();
-      requestAnimationFrame(animateStars);
-    }
-
-    createStars();
-    animateStars();
-  </script>
-
 </body>
 </html>
