@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Onurcan Genç | Medium Articles</title>
+  <title>{{ site_title }}</title>
 
   <meta name="description" content="Brief descriptions of Onurcan Genç's Medium articles." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Onurcan Genç | Medium Articles">
-  <meta property="og:description" content="Brief descriptions and summaries of Onurcan Genç's latest Medium blog posts.">
+  <meta property="og:title" content="{{ site_title }}">
+  <meta property="og:description" content="Summaries of Onurcan Genç's latest Medium blog posts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://writeup.onurcangenc.com.tr/">
   <meta property="og:image" content="https://writeup.onurcangenc.com.tr/preview.jpg">
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -27,9 +26,8 @@
       border: 3px solid #3b82f6;
     }
     .social-icons a {
-      margin: 0 0.5rem;
+      margin-right: 10px;
       color: #3b82f6;
-      font-size: 1.3rem;
       transition: color 0.3s;
     }
     .social-icons a:hover {
@@ -48,10 +46,10 @@
       <img src="/static/profile.png" alt="Onurcan Genç" class="profile-pic mb-4">
       <h1 class="text-3xl font-bold mb-2">Onurcan Genç</h1>
       <p class="text-gray-400">Cybersecurity | Penetration Testing | Medium Blogger</p>
-      <div class="social-icons mt-4 flex space-x-4">
-        <a href="https://linkedin.com/in/onurcangenc" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://twitter.com/onurcangenc" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://github.com/onurcangnc" target="_blank"><i class="fab fa-github"></i></a>
+      <div class="social-icons mt-4">
+        <a href="https://linkedin.com/in/onurcangenc" target="_blank">LinkedIn</a>
+        <a href="https://twitter.com/onurcangenc" target="_blank">Twitter</a>
+        <a href="https://github.com/onurcangnc" target="_blank">GitHub</a>
       </div>
     </div>
 
@@ -83,7 +81,7 @@
     <div class="flex justify-between mt-8 text-sm">
       {% if current_page > 1 %}
         <a href="{{ 'index.html' if current_page == 2 else 'page/' ~ (current_page - 1) ~ '.html' }}"
-          class="text-indigo-400 hover:underline">← Previous</a>
+           class="text-indigo-400 hover:underline">← Previous</a>
       {% else %}
         <span></span>
       {% endif %}
@@ -92,8 +90,7 @@
         <a href="page/{{ current_page + 1 }}.html" class="text-indigo-400 hover:underline">Next →</a>
       {% endif %}
     </div>
-
-
+  </div>
 
 </body>
 </html>
