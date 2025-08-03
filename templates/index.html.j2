@@ -14,6 +14,7 @@
   <meta property="og:image" content="https://writeup.onurcangenc.com.tr/preview.jpg">
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -26,8 +27,9 @@
       border: 3px solid #3b82f6;
     }
     .social-icons a {
-      margin-right: 10px;
+      margin: 0 0.5rem;
       color: #3b82f6;
+      font-size: 1.3rem;
       transition: color 0.3s;
     }
     .social-icons a:hover {
@@ -46,10 +48,10 @@
       <img src="/static/profile.png" alt="Onurcan Genç" class="profile-pic mb-4">
       <h1 class="text-3xl font-bold mb-2">Onurcan Genç</h1>
       <p class="text-gray-400">Cybersecurity | Penetration Testing | Medium Blogger</p>
-      <div class="social-icons mt-4">
-        <a href="https://linkedin.com/in/onurcangenc" target="_blank">LinkedIn</a>
-        <a href="https://twitter.com/onurcangenc" target="_blank">Twitter</a>
-        <a href="https://github.com/onurcangnc" target="_blank">GitHub</a>
+      <div class="social-icons mt-4 flex space-x-4">
+        <a href="https://linkedin.com/in/onurcangenc" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/onurcangenc" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/onurcangnc" target="_blank"><i class="fab fa-github"></i></a>
       </div>
     </div>
 
@@ -57,7 +59,7 @@
       <div class="bg-gray-800 p-4 rounded-lg mb-6 shadow hover:shadow-xl transition">
         <h2 class="text-xl font-semibold">{{ post.title }}</h2>
         <p class="text-sm text-gray-400">{{ post.published }}</p>
-        <p class="mt-2 text-gray-300">{{ post.summary }}</p>
+        <p class="mt-2 text-gray-300">{{ post.summary | striptags }}</p>
         <a href="{{ post.link }}" target="_blank" class="text-indigo-400 hover:underline inline-block mt-3">Medium'da oku →</a>
       </div>
 
@@ -78,12 +80,12 @@
     {% endfor %}
 
     <!-- Pagination -->
-    <div class="flex justify-between mt-8 text-sm">
+    <div class="flex justify-between items-center mt-10 text-sm">
       {% if current_page > 1 %}
         <a href="{{ 'index.html' if current_page == 2 else '/page/' ~ (current_page - 1) ~ '.html' }}"
            class="text-indigo-400 hover:underline">← Previous</a>
       {% else %}
-        <span></span>
+        <span class="invisible">← Previous</span>
       {% endif %}
 
       {% if current_page < total_pages %}
