@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onurcan Genç | Medium Articles</title>
+
+  <meta name="description" content="Brief descriptions of Onurcan Genç's Medium articles." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Onurcan Genç | Medium Articles">
+  <meta property="og:description" content="Brief descriptions and summaries of Onurcan Genç's latest Medium blog posts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://writeup.onurcangenc.com.tr/">
+  <meta property="og:image" content="https://writeup.onurcangenc.com.tr/preview.jpg">
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans leading-normal tracking-normal">
+
+  <div class="max-w-3xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6">Onurcan Genç | Medium Articles</h1>
+
+    {% for post in posts %}
+      <div class="bg-gray-800 p-4 rounded-lg mb-6 shadow hover:shadow-xl transition">
+        <h2 class="text-xl font-semibold">{{ post.title }}</h2>
+        <p class="text-sm text-gray-400">{{ post.published }}</p>
+        <p class="mt-2 text-gray-300">{{ post.summary }}</p>
+        <a href="{{ post.link }}" target="_blank" class="text-indigo-400 hover:underline inline-block mt-3">Medium'da oku →</a>
+      </div>
+
+      {% if loop.index % 3 == 0 %}
+        <!-- Google AdSense Banner -->
+        <div class="my-8" role="complementary" aria-label="Advertisement">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-XXXXXXXXXXXX"
+               data-ad-slot="1234567890"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-between mt-8 text-sm px-6 max-w-3xl mx-auto">
+    {% if current_page > 1 %}
+      <a href="{{ 'index.html' if current_page == 2 else '/page/' ~ (current_page - 1) ~ '.html' }}"
+         class="text-indigo-400 hover:underline">← Previous</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+
+    {% if current_page < total_pages %}
+      <a href="/page/{{ current_page + 1 }}.html" class="text-indigo-400 hover:underline">Next →</a>
+    {% endif %}
+  </div>
+
+</body>
+</html>
