@@ -81,3 +81,7 @@ jobs:
           git add .
           git commit -m "🚀 Deploy GitHub Pages"
           git push -f origin gh-pages
+      - name: Debug Output Folder
+        run: |
+          echo "Listing output/"
+          ls -l output || echo "output/ not found"
