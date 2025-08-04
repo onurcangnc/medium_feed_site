@@ -32,17 +32,6 @@
   <link rel="icon" type="image/png" href="/static/profile.jpg">
   <link href="/static/output.css" rel="stylesheet" />
 
-  <script>
-  if (
-    localStorage.getItem('color-theme') === 'dark' ||
-    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
-  </script>
-
   <!-- ScrollReveal.js -->
   <script src="https://unpkg.com/scrollreveal"></script>
 
@@ -214,13 +203,20 @@
 <script>
 
 // Kullanıcının tercih ettiği tema
-  if (
-    localStorage.getItem('color-theme') === 'dark' ||
-    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    document.documentElement.classList.add('dark');
+if (localStorage.getItem('theme') === 'light') {
+  document.documentElement.classList.remove('dark');
+}
+
+function toggleTheme() {
+  const html = document.documentElement;
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
   } else {
-    document.documentElement.classList.remove('dark');
+    html.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+}
 
 function smoothScroll(e) {
   e.preventDefault();
@@ -229,20 +225,6 @@ function smoothScroll(e) {
     block: 'start'
   });
 }
-
-function toggleTheme() {
-  const html = document.documentElement;
-  const currentTheme = localStorage.getItem('color-theme');
-
-  if (html.classList.contains('dark')) {
-    html.classList.remove('dark');
-    localStorage.setItem('color-theme', 'light');
-  } else {
-    html.classList.add('dark');
-    localStorage.setItem('color-theme', 'dark');
-  }
-}
-
 
 document.addEventListener("DOMContentLoaded", () => {
   // 🔄 Skeleton ve içerik kontrolü
