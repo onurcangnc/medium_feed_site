@@ -4,53 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-adsense-account" content="ca-pub-5907670584730847">
+
+  <!-- ✅ AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5907670584730847"
-  crossorigin="anonymous"></script>
-  <!-- ✅ Auto Ads Init -->
+    crossorigin="anonymous"></script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({
       google_ad_client: "ca-pub-5907670584730847",
       enable_page_level_ads: true
     });
   </script>
+
   <title>{{ site_title }}</title>
 
-  <!-- SEO Meta -->
+  <!-- ✅ SEO Meta -->
   <meta name="description" content="Explore cybersecurity-focused articles by Onurcan Genç. CTFs, real-world pentest experiences, and tools.">
   <meta name="keywords" content="Onurcan Genç, Cybersecurity, Pentesting, CTF, InfoSec, Web Security, Medium Articles">
   <meta name="author" content="Onurcan Genç">
   <link rel="canonical" href="https://onurcangenc.com.tr/" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph -->
+  <!-- ✅ Open Graph -->
   <meta property="og:title" content="{{ site_title }}">
   <meta property="og:description" content="Explore professional Medium articles by Onurcan Genç on cybersecurity.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://onurcangenc.com.tr/">
   <meta property="og:image" content="https://onurcangenc.com.tr/static/alvin.jpg">
 
-  <!-- Twitter Card -->
+  <!-- ✅ Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ site_title }}">
   <meta name="twitter:description" content="Cybersecurity articles, CTF writeups, and real-world penetration testing findings by Onurcan Genç.">
   <meta name="twitter:image" content="https://onurcangenc.com.tr/static/alvin.jpg">
 
-  <!-- Favicon -->
+  <!-- ✅ Favicon & Styles -->
   <link rel="icon" type="image/png" href="/static/profile.jpg">
   <link href="/static/output.css" rel="stylesheet" />
 
-  <!-- ScrollReveal.js -->
+  <!-- ✅ ScrollReveal -->
   <script src="https://unpkg.com/scrollreveal"></script>
 
-  <!-- Google Analytics -->
+  <!-- ✅ Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
+  <!-- ✅ Arka Plan Efekti -->
   <style>
     body::before {
       content: "";
@@ -63,6 +66,7 @@
       z-index: -1;
       animation: bgparallax 30s ease-in-out infinite alternate;
     }
+
     @keyframes bgparallax {
       0% { transform: translate(0, 0); }
       100% { transform: translate(-20px, -20px); }
@@ -74,20 +78,43 @@
     }
   </style>
 </head>
-<body class="bg-gray-950 text-white font-sans leading-relaxed">
-  <!-- AdSense Init -->
-  <script>
-    window.addEventListener("load", function () {
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    });
-  </script>
 
-  <!-- 🔍 Hidden block for test validation (won’t affect layout) -->
+<body class="bg-gray-950 text-white font-sans leading-relaxed">
+  <!-- ✅ Toggle Theme Button -->
+  <button id="toggle-theme" class="fixed top-4 right-4 bg-gray-800 text-white p-2 rounded-full shadow-lg z-50">
+    🌓
+  </button>
+
+  <!-- ✅ Hidden block for test validation -->
   <div class="hidden-render-test">
     {% for post in posts %}
       <span>{{ post.title }}</span>
       <span>{{ post.summary }}</span>
     {% endfor %}
   </div>
+
+  <!-- ✅ Theme Toggle Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const userTheme = localStorage.getItem("theme");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userTheme === "dark" || (!userTheme && systemDark)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      const toggleBtn = document.getElementById("toggle-theme");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          const html = document.documentElement;
+          const isDark = html.classList.contains("dark");
+          html.classList.toggle("dark");
+          localStorage.setItem("theme", isDark ? "light" : "dark");
+        });
+      }
+    });
+  </script>
 </body>
 </html>
