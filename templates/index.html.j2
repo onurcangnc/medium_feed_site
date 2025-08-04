@@ -45,25 +45,27 @@
   <div id="progressBar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-pink-500 z-[9999] transition-all duration-200" style="width: 0%;"></div>
 
   <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-90 shadow-sm border-b border-gray-800 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
       <h1 class="text-xl font-bold text-blue-400">{{ site_title }}</h1>
-      <button onclick="toggleTheme()" class="ml-auto text-sm bg-gray-700 px-3 py-1 rounded hover:bg-gray-600 focus:outline-none focus:ring">
-        Toggle Theme
-      </button>
+      <div class="flex gap-3 items-center ml-auto">
+        <select 
+          onchange="filterPosts(this.value)" 
+          class="text-sm px-3 py-1 bg-gray-800 text-white border border-gray-600 rounded focus:outline-none focus:ring"
+        >
+          <option value="all">Show All Tags</option>
+          {% set all_tags = posts | map(attribute='tags') | sum(start=[]) | unique %}
+          {% for tag in all_tags %}
+            <option value="{{ tag }}">{{ tag }}</option>
+          {% endfor %}
+        </select>
+        <button onclick="toggleTheme()" class="text-sm bg-gray-700 px-3 py-1 rounded hover:bg-gray-600 focus:outline-none focus:ring">
+          Toggle Theme
+        </button>
+      </div>
     </div>
   </nav>
 
   <main class="max-w-7xl mx-auto px-4 py-12">
-
-    <!-- Banner Ad -->
-    <div class="mb-6">
-      <ins class="adsbygoogle" style="display:block"
-        data-ad-client="ca-pub-5907670584730847"
-        data-ad-slot="1234567890"
-        data-ad-format="horizontal"
-        data-full-width-responsive="true"
-        loading="lazy"></ins>
-    </div>
 
     <!-- OG Preview -->
     <section class="-mt-12 mb-16">
@@ -80,20 +82,6 @@
         </div>
       </div>
     </section>
-
-    <!-- 🔍 Tag Filter Dropdown -->
-    <div class="flex justify-center mb-12">
-      <select 
-        onchange="filterPosts(this.value)" 
-        class="px-4 py-2 bg-gray-800 text-white rounded border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
-      >
-        <option value="all">Show All Tags</option>
-        {% set all_tags = posts | map(attribute='tags') | sum(start=[]) | unique %}
-        {% for tag in all_tags %}
-          <option value="{{ tag }}">{{ tag }}</option>
-        {% endfor %}
-      </select>
-    </div>
 
     <!-- Skeleton Loader -->
     <div id="skeletonLoader" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -190,20 +178,23 @@ function smoothScroll(e) {
 }
 
 function filterPosts(tag) {
-  document.querySelectorAll('.post-card').forEach(card => {
+  const cards = document.querySelectorAll('.post-card');
+  if (tag === 'all') {
+    cards.forEach(card => card.style.display = 'block');
+    return;
+  }
+  cards.forEach(card => {
     const tags = card.dataset.tags?.toLowerCase() || '';
-    card.style.display = tag === 'all' || tags.includes(tag.toLowerCase()) ? 'block' : 'none';
+    const match = tags.split(',').map(t => t.trim()).includes(tag.toLowerCase());
+    card.style.display = match ? 'block' : 'none';
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const skeleton = document.getElementById("skeletonLoader");
+  document.getElementById("skeletonLoader").style.display = "none";
   const container = document.getElementById("postsContainer");
-  if (skeleton) skeleton.style.display = "none";
-  if (container) {
-    container.classList.remove("hidden");
-    container.style.display = "";
-  }
+  container.classList.remove("hidden");
+  container.style.display = "";
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -222,9 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.querySelectorAll("ins.adsbygoogle").forEach(ad => {
-    observer.observe(ad);
-  });
+  document.querySelectorAll("ins.adsbygoogle").forEach(ad => observer.observe(ad));
 
   ScrollReveal().reveal('[data-sr]', {
     distance: '30px',
