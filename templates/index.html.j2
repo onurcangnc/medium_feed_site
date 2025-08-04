@@ -169,34 +169,48 @@
   </main>
 
   <!-- JS Enhancements -->
-  <script>
-    ScrollReveal().reveal('[data-sr]', {
-      distance: '30px',
-      origin: 'bottom',
-      opacity: 0,
-      duration: 800,
-      interval: 120,
-      reset: false
-    });
+<script>
+  // Theme loader (prevents flicker)
+  (function () {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  })();
 
-    function toggleTheme() {
-      const html = document.documentElement;
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    }
+  // Theme toggle button
+  function toggleTheme() {
+    const html = document.documentElement;
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark') document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-
+  // Loader + ScrollReveal
+  document.addEventListener("DOMContentLoaded", () => {
+    // Ensure layout is settled
+    requestAnimationFrame(() => {
       setTimeout(() => {
-        document.getElementById("skeletonLoader").style.display = "none";
+        // Reveal posts
+        const skeleton = document.getElementById("skeletonLoader");
         const container = document.getElementById("postsContainer");
-        container.classList.remove("hidden");
-        container.style.display = "";
-      }, 1500);
+        if (skeleton) skeleton.style.display = "none";
+        if (container) {
+          container.classList.remove("hidden");
+          container.style.display = "";
+        }
+
+        // Run ScrollReveal AFTER posts are in DOM
+        ScrollReveal().reveal('[data-sr]', {
+          distance: '30px',
+          origin: 'bottom',
+          opacity: 0,
+          duration: 800,
+          interval: 120,
+          reset: false
+        });
+      }, 300); // Reduced delay for better UX
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
