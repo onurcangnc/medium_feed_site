@@ -1,4 +1,5 @@
 import os
+import re
 import math
 import shutil
 import feedparser
@@ -10,9 +11,21 @@ OUTPUT_DIR = "output"
 POSTS_PER_PAGE = 6
 SITE_TITLE = "Onurcan Genç | Medium Articles"
 
+# Thumbnail çıkar
+def extract_thumbnail(summary_html):
+    match = re.search(r'<img[^>]+src="([^">]+)"', summary_html)
+    return match.group(1) if match else None
+
+# HTML tag temizle
+def strip_tags(html):
+    return re.sub(r'<[^>]+>', '', html)
+
 # RSS verisini çek
 def fetch_entries():
     feed = feedparser.parse(FEED_URL)
+    for entry in feed.entries:
+        entry.thumbnail = extract_thumbnail(entry.summary)
+        entry.summary = strip_tags(entry.summary)
     return feed.entries
 
 # Sayfa oluştur
@@ -40,10 +53,11 @@ def generate_pages(entries):
             site_title=SITE_TITLE
         )
 
-        if page_num == 1:
-            output_path = os.path.join(OUTPUT_DIR, "index.html")
-        else:
-            output_path = os.path.join(page_dir, f"{page_num}.html")
+        output_path = (
+            os.path.join(OUTPUT_DIR, "index.html")
+            if page_num == 1
+            else os.path.join(page_dir, f"{page_num}.html")
+        )
 
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(html)
