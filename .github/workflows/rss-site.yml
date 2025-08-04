@@ -1,4 +1,4 @@
-name: Build RSS Site for Netlify
+name: Build & Test RSS Site
 
 on:
   push:
@@ -7,11 +7,65 @@ on:
     - cron: '0 */6 * * *'
 
 jobs:
-  build:
+  test-feed:
+    name: 🔎 RSS Feed Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Feed Tests
+        run: pytest tests/test_rss.py -k "feed"
+
+  test-utils:
+    name: 🔧 Utility Function Tests
+    runs-on: ubuntu-latest
+    needs: test-feed
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Utils Tests
+        run: pytest tests/test_rss.py -k "thumbnail or strip_tags"
+
+  test-template:
+    name: 🧱 Template Render Test
+    runs-on: ubuntu-latest
+    needs: test-utils
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Template Render Test
+        run: pytest tests/test_rss.py -k "template"
+
+  build-site:
+    name: 🚀 Build RSS HTML
+    runs-on: ubuntu-latest
+    needs: test-template
+    steps:
+      - uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4
