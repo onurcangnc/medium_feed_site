@@ -1,158 +1,200 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
-  <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5907670584730847" crossorigin="anonymous"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ site_title }}</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ site_title }}</title>
 
-    <!-- SEO Meta -->
-    <meta name="description" content="Explore cybersecurity-focused articles by Onurcan Genç. CTFs, real-world pentest reports, and tools.">
-    <meta name="keywords" content="Onurcan Genç, Cybersecurity, Pentesting, CTF, InfoSec, Web Security, Medium Articles">
-    <meta name="author" content="Onurcan Genç">
-    <link rel="canonical" href="https://onurcangenc.com.tr/" />
-    <meta name="robots" content="index, follow" />
+  <!-- SEO Meta -->
+  <meta name="description" content="Explore cybersecurity-focused articles by Onurcan Genç. CTFs, real-world pentest reports, and tools.">
+  <meta name="keywords" content="Onurcan Genç, Cybersecurity, Pentesting, CTF, InfoSec, Web Security, Medium Articles">
+  <meta name="author" content="Onurcan Genç">
+  <link rel="canonical" href="https://onurcangenc.com.tr/" />
+  <meta name="robots" content="index, follow" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="{{ site_title }}">
-    <meta property="og:description" content="Explore professional Medium articles by Onurcan Genç on cybersecurity.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://onurcangenc.com.tr/">
-    <meta property="og:image" content="https://onurcangenc.com.tr/static/og-image.png">
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ site_title }}">
+  <meta property="og:description" content="Explore professional Medium articles by Onurcan Genç on cybersecurity.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onurcangenc.com.tr/">
+  <meta property="og:image" content="https://onurcangenc.com.tr/static/og-image.png">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ site_title }}">
-    <meta name="twitter:description" content="Cybersecurity articles, CTF writeups, and real-world infosec findings by Onurcan Genç.">
-    <meta name="twitter:image" content="https://onurcangenc.com.tr/static/og-image.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ site_title }}">
+  <meta name="twitter:description" content="Cybersecurity articles, CTF writeups, and real-world infosec findings by Onurcan Genç.">
+  <meta name="twitter:image" content="https://onurcangenc.com.tr/static/og-image.png">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/static/favicon.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/static/favicon.png">
+  <link href="/output.css" rel="stylesheet" />
 
-    <!-- TailwindCSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ScrollReveal.js -->
+  <script src="https://unpkg.com/scrollreveal"></script>
 
-    <!-- ScrollReveal.js -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- Ads -->
+  <script defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5907670584730847" crossorigin="anonymous"></script>
 
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 
-    <style>
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(34,193,195,0.08), rgba(253,187,45,0.05));
-        z-index: -1;
-        animation: bgparallax 30s ease-in-out infinite alternate;
-      }
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(34,193,195,0.08), rgba(253,187,45,0.05));
+      z-index: -1;
+      animation: bgparallax 30s ease-in-out infinite alternate;
+    }
+    @keyframes bgparallax {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-20px, -20px); }
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-white font-sans leading-relaxed">
 
-      @keyframes bgparallax {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(-20px, -20px); }
-      }
-    </style>
-  </head>
-  <body class="bg-gray-950 text-white font-sans leading-relaxed">
-    <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-90 shadow-sm border-b border-gray-800 backdrop-blur-md">
-      <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <h1 class="text-xl font-bold text-blue-400">{{ site_title }}</h1>
-      </div>
-    </nav>
+  <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-90 shadow-sm border-b border-gray-800 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-blue-400">{{ site_title }}</h1>
+      <button onclick="toggleTheme()" class="ml-auto text-sm bg-gray-700 px-3 py-1 rounded hover:bg-gray-600 focus:outline-none focus:ring">
+        Toggle Theme
+      </button>
+    </div>
+  </nav>
 
-    <main class="max-w-7xl mx-auto px-4 py-12">
-<!-- Banner Ad -->
-<div class="mb-6">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5907670584730847"
-       data-ad-slot="1234567890"
-       data-ad-format="horizontal"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+  <main class="max-w-7xl mx-auto px-4 py-12">
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {% for post in posts %}
-        {% if loop.index == 2 %}
-        <!-- In-feed Ad after 2nd post -->
-        <div class="sm:col-span-2 lg:col-span-3">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-5907670584730847"
-               data-ad-slot="2345678901"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-        {% endif %}
-        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr>
-          {% if post.thumbnail %}
-          <img src="{{ post.thumbnail }}" alt="cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
-          {% endif %}
-          <div class="p-6">
-            <div class="text-xs text-gray-400 mb-1">{{ post.published }}</div>
-            <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition">
-              {{ post.title }}
-            </h2>
-            <p class="text-sm text-gray-300 mb-4">
-              {{ post.summary | truncate(160, True, "...") }}
-            </p>
-            <a href="{{ post.link }}" target="_blank" class="inline-block">
-              <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 hover:from-pink-500 hover:to-blue-600 text-white rounded-full font-medium shadow hover:shadow-lg transition duration-300">
-                Read Article →
-              </button>
-            </a>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
+    <!-- Banner Ad -->
+    <div class="mb-6">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5907670584730847"
+           data-ad-slot="1234567890"
+           data-ad-format="horizontal"
+           data-full-width-responsive="true"
+           loading="lazy"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-      {% if total_pages > 1 %}
-      <div class="mt-10 text-center space-x-2">
-        {% for page_num in range(1, total_pages + 1) %}
-          {% if page_num == current_page %}
-            <span class="px-4 py-2 rounded bg-blue-600 text-white font-semibold">{{ page_num }}</span>
-          {% else %}
-            <a href="{% if page_num == 1 %}/index.html{% else %}/page/{{ page_num }}.html{% endif %}" class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white font-semibold">
-              {{ page_num }}
-            </a>
-          {% endif %}
-        {% endfor %}
+    <!-- Loading Skeleton -->
+    <div id="skeletonLoader" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 p-6 rounded-xl animate-pulse h-60"></div>
+      <div class="bg-gray-800 p-6 rounded-xl animate-pulse h-60"></div>
+      <div class="bg-gray-800 p-6 rounded-xl animate-pulse h-60"></div>
+    </div>
+
+    <!-- Actual Posts -->
+    <div id="postsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+      {% for post in posts %}
+      {% if loop.index != 0 and loop.index % 6 == 0 %}
+      <div class="col-span-full">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5907670584730847"
+             data-ad-slot="2345678901"
+             data-ad-format="auto"
+             data-full-width-responsive="true"
+             loading="lazy"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
       {% endif %}
+      <div class="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr>
+        {% if post.thumbnail %}
+        <img src="{{ post.thumbnail }}" alt="{{ post.title }} cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        {% endif %}
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">{{ post.published }}</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition">
+            {{ post.title }}
+          </h2>
+          <p class="text-sm text-gray-300 mb-4">
+            {{ post.summary | truncate(160, True, "...") }}
+          </p>
+          <a href="{{ post.link }}" target="_blank" class="inline-block">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 hover:from-pink-500 hover:to-blue-600 text-white rounded-full font-medium shadow hover:shadow-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
-<!-- Footer Native Ad -->
-<div class="mt-12">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5907670584730847"
-       data-ad-slot="3456789012"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-</main>
+    {% if total_pages > 1 %}
+    <div class="mt-10 text-center space-x-2">
+      {% for page_num in range(1, total_pages + 1) %}
+        {% if page_num == current_page %}
+          <span class="px-4 py-2 rounded bg-blue-600 text-white font-semibold">{{ page_num }}</span>
+        {% else %}
+          <a href="{% if page_num == 1 %}/index.html{% else %}/page/{{ page_num }}.html{% endif %}" class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white font-semibold">
+            {{ page_num }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
 
-    <script>
-      ScrollReveal().reveal('[data-sr]', {
-        distance: '30px',
-        origin: 'bottom',
-        opacity: 0,
-        duration: 800,
-        interval: 120,
-        reset: false
-      });
-    </script>
-  </body>
+    <!-- Newsletter CTA -->
+    <div class="mt-12 p-6 bg-gray-800 rounded-xl text-center">
+      <h3 class="text-2xl font-semibold mb-2">Get the Latest Cybersecurity Insights</h3>
+      <p class="text-gray-300 mb-4">Get notified on new articles and tools</p>
+      <form action="https://your-mailchimp-url" method="post" target="_blank" class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <input type="email" name="EMAIL" placeholder="Your email" required class="px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Join Newsletter</button>
+      </form>
+    </div>
+
+    <!-- Footer Ad -->
+    <div class="mt-12">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5907670584730847"
+           data-ad-slot="3456789012"
+           data-ad-format="auto"
+           data-full-width-responsive="true"
+           loading="lazy"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </main>
+
+  <!-- JS Enhancements -->
+  <script>
+    ScrollReveal().reveal('[data-sr]', {
+      distance: '30px',
+      origin: 'bottom',
+      opacity: 0,
+      duration: 800,
+      interval: 120,
+      reset: false
+    });
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+
+      setTimeout(() => {
+        document.getElementById("skeletonLoader").style.display = "none";
+        document.getElementById("postsContainer").classList.remove("hidden");
+      }, 1500);
+    });
+  </script>
+</body>
 </html>

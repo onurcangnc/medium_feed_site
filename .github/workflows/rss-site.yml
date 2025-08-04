@@ -15,23 +15,36 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Setup Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      # Test utils
+      # ✅ Tailwind setup
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Tailwind dependencies
+        run: npm install
+
+      - name: Run TailwindCSS build
+        run: npm run build
+
+      # ✅ Test utils
       - name: Run Utility Function Tests
         run: PYTHONPATH=. pytest tests/test_utils.py -k "thumbnail_extraction or strip_tags_removes_html"
 
-      # Test template render (real feed)
+      # ✅ Test template render (real feed)
       - name: Run Template Render Test
         run: PYTHONPATH=. pytest tests/test_template.py -k "test_real_feed_rendering"
 
-      # Build site
+      # ✅ Build RSS site
       - name: Generate RSS HTML
         run: python main.py
 
@@ -40,7 +53,7 @@ jobs:
           echo "Listing output directory:"
           ls -l output || echo "output/ not found"
 
-      # Deploy to GitHub Pages (overwrites gh-pages branch)
+      # ✅ Deploy to GitHub Pages (gh-pages branch)
       - name: Deploy output/ to gh-pages branch
         run: |
           git config --global user.name "github-actions"
