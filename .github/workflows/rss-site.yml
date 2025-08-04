@@ -48,13 +48,22 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      # Öncesi debug
+      - name: List files before build
+        run: ls -l
+
       - name: Generate RSS HTML
-        run: python main.py
-      - name: Debug Output Directory
         run: |
-          echo "Listing output directory:"
+          python main.py
+          echo "AFTER MAIN.PY:"
+          ls -l
           ls -l output || echo "output/ not found"
 
+      - name: Debug Output Directory
+        run: |
+          echo "Listing output directory contents:"
+          ls -l output || echo "output/ not found"
 
   deploy-site:
     name: 🚢 Deploy to GitHub Pages
@@ -69,6 +78,11 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+
+      - name: Debug Output Directory (pre-deploy)
+        run: |
+          echo "Final listing before deploy:"
+          ls -l output || echo "output/ not found"
 
       - name: Deploy output/ to gh-pages branch
         run: |
