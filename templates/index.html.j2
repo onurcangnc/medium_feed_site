@@ -3,70 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ site_title }}</title>
+  <title>Onurcan Genç | Cybersecurity Blog</title>
 
-  <!-- ✅ Meta -->
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5907670584730847" crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5907670584730847",
+      enable_page_level_ads: true
+    });
+  </script>
+
+  <!-- SEO Meta -->
   <meta name="description" content="Explore cybersecurity-focused articles by Onurcan Genç. CTFs, real-world pentest experiences, and tools.">
   <meta name="keywords" content="Onurcan Genç, Cybersecurity, Pentesting, CTF, InfoSec, Web Security, Medium Articles">
   <meta name="author" content="Onurcan Genç">
   <link rel="canonical" href="https://onurcangenc.com.tr/" />
   <meta name="robots" content="index, follow" />
-  <meta name="google-adsense-account" content="ca-pub-5907670584730847"> <!-- Auto-enables ads -->
 
-  <!-- ✅ Social & Ads -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5907670584730847" crossorigin="anonymous"></script>
-  
-  <!-- ... rest of head ... -->
+  <!-- Open Graph -->
+  <meta property="og:title" content="Onurcan Genç | Cybersecurity Blog">
+  <meta property="og:description" content="Explore professional Medium articles by Onurcan Genç on cybersecurity.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onurcangenc.com.tr/">
+  <meta property="og:image" content="https://onurcangenc.com.tr/static/profile.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Onurcan Genç | Cybersecurity Blog">
+  <meta name="twitter:description" content="Cybersecurity articles, CTF writeups, and real-world penetration testing findings by Onurcan Genç.">
+  <meta name="twitter:image" content="https://onurcangenc.com.tr/static/profile.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/static/profile.jpg">
+  <link href="/static/output.css" rel="stylesheet" />
+
+  <!-- Background Animation -->
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(34,193,195,0.08), rgba(253,187,45,0.05));
+      z-index: -1;
+      animation: bgparallax 30s ease-in-out infinite alternate;
+    }
+    @keyframes bgparallax {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-20px, -20px); }
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX'); // TODO: Replace with your actual GA ID
+  </script>
 </head>
 
 <body class="bg-gray-950 text-white font-sans leading-relaxed">
-  <!-- ✅ Theme Toggle Button -->
-  <button id="toggle-theme" class="fixed top-4 right-4 p-2 rounded-full bg-gray-800 shadow-xl z-50">🌓</button>
-
-  <!-- ✅ Article Cards -->
-  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
-    {% for post in posts %}
-    <!-- ... -->
-    {% endfor %}
-  </div>
-
-  <!-- ✅ Theme Script (Moved after button) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const html = document.documentElement;
-      const toggleBtn = document.getElementById("toggle-theme");
-      
-      // Handle null button case
-      if(!toggleBtn) return;
-      
-      const userTheme = localStorage.getItem("theme");
-      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-      // Initial theme setup
-      if (userTheme === "dark" || (!userTheme && systemDark)) {
-        html.classList.add("dark");
-      } else {
-        html.classList.remove("dark");
-      }
-
-      // Toggle handler
-      toggleBtn.addEventListener("click", () => {
-        const isDark = html.classList.contains("dark");
-        html.classList.toggle("dark");
-        localStorage.setItem("theme", isDark ? "light" : "dark");
-      });
-    });
-  </script>
-
-  <!-- ✅ ScrollReveal Script -->
-  <script>
-    ScrollReveal().reveal('[data-sr]', {
-      origin: 'bottom',
-      distance: '20px',
-      duration: 600,
-      delay: 100,
-      easing: 'ease-in-out',
-    });
-  </script>
+  <main class="min-h-screen flex flex-col items-center justify-center text-center p-6">
+    <img src="/static/profile.jpg" alt="Onurcan Genç" class="w-32 h-32 rounded-full shadow-lg mb-4">
+    <h1 class="text-4xl font-bold mb-2">Onurcan Genç</h1>
+    <p class="text-gray-400 text-lg max-w-xl">
+      Cybersecurity researcher & penetration tester. Explore CTF writeups, real-world pentest reports, and security tools.
+    </p>
+    <a href="https://medium.com/@onurcangencbilkent" class="mt-4 inline-block text-blue-400 hover:underline">Read My Medium Articles →</a>
+  </main>
 </body>
 </html>
