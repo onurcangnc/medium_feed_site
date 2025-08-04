@@ -26,13 +26,19 @@ def extract_thumbnail(summary_html):
 def strip_tags(html):
     return re.sub(r'<[^>]+>', '', html)
 
-# RSS verisini çek
+# RSS verisini çek ve işle
 def fetch_entries():
     feed = feedparser.parse(FEED_URL)
     for entry in feed.entries:
         entry.thumbnail = extract_thumbnail(entry.summary)
         entry.summary = strip_tags(entry.summary)
-        entry.tags = [tag['term'].lower() for tag in entry.get("tags", []) if 'term' in tag]
+
+        # Hata çıkaran satır düzeltildi:
+        if "tags" in entry:
+            entry["tags"] = [tag["term"].lower() for tag in entry["tags"] if "term" in tag]
+        else:
+            entry["tags"] = []
+
     return feed.entries
 
 # Sayfa oluştur
@@ -65,13 +71,14 @@ def generate_pages(entries):
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(html)
 
-# static klasörünü output içine kopyala
+# static klasörünü kopyala
 def copy_static_files():
     static_src = "static"
     static_dst = os.path.join(OUTPUT_DIR, "static")
     if os.path.exists(static_src):
         shutil.copytree(static_src, static_dst, dirs_exist_ok=True)
 
+# Ana çalışma akışı
 if __name__ == "__main__":
     entries = fetch_entries()
     generate_pages(entries)
