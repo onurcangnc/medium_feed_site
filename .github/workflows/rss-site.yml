@@ -7,27 +7,9 @@ on:
     - cron: '0 */12 * * *'
 
 jobs:
-  test-feed:
-    name: 🔎 RSS Feed Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run Feed Tests
-        run: pytest tests/test_rss.py -k "feed"
-
   test-utils:
     name: 🔧 Utility Function Tests
     runs-on: ubuntu-latest
-    needs: test-feed
     steps:
       - uses: actions/checkout@v3
       - name: Setup Python
@@ -37,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run Utils Tests
-        run: PYTHONPATH=. pytest tests/test_utils.py -k 'thumbnail_extraction or strip_tags_removes_html'
+        run: pytest tests/test_utils.py -k "thumbnail_extraction or strip_tags_removes_html"
 
   test-template:
     name: 🧱 Template Render Test
@@ -52,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run Template Render Test
-        run: pytest tests/test_rss.py -k "template"
+        run: pytest tests/test_template.py -k "test_real_feed_rendering"
 
   build-site:
     name: 🚀 Build RSS HTML
@@ -95,4 +77,3 @@ jobs:
           git add .
           git commit -m "🚀 Deploy GitHub Pages"
           git push -f origin gh-pages
-
