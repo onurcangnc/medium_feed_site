@@ -26,6 +26,7 @@ def fetch_entries():
     for entry in feed.entries:
         entry.thumbnail = extract_thumbnail(entry.summary)
         entry.summary = strip_tags(entry.summary)
+        entry.tags = [tag.term.lower() for tag in entry.get("tags", [])]
     return feed.entries
 
 # Sayfa oluştur
