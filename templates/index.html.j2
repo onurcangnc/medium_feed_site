@@ -188,64 +188,45 @@
 
  <!-- ✅ JS Enhancements -->
 <script>
-  // Theme loader (prevents flicker)
-  (function () {
-    const theme = localStorage.getItem('theme');
-    if (theme === 'dark') document.documentElement.classList.add('dark');
-    else document.documentElement.classList.remove('dark');
-  })();
+// Enhanced DOMContentLoaded
+document.addEventListener("DOMContentLoaded", () => {
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      const skeleton = document.getElementById("skeletonLoader");
+      const container = document.getElementById("postsContainer");
 
-  function toggleTheme() {
-    const html = document.documentElement;
-    html.classList.toggle('dark');
-    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-  }
+      if (skeleton) skeleton.style.display = "none";
+      if (container) {
+        container.classList.remove("hidden");
+        container.style.display = "";
+      }
 
-  // Enhanced DOMContentLoaded
-  document.addEventListener("DOMContentLoaded", () => {
-    requestAnimationFrame(() => {
+      // ✅ Sadece yüklenmemiş reklamları push et
       setTimeout(() => {
-        const skeleton = document.getElementById("skeletonLoader");
-        const container = document.getElementById("postsContainer");
-
-        if (skeleton) skeleton.style.display = "none";
-        if (container) {
-          container.classList.remove("hidden");
-          container.style.display = "";
-        }
-
-        // ✅ AdSense blokları görünür hale geldikten sonra push et
-        setTimeout(() => {
-          try {
-            const ads = document.querySelectorAll(".adsbygoogle");
-            ads.forEach(ad => {
+        try {
+          const ads = document.querySelectorAll("ins.adsbygoogle");
+          ads.forEach(ad => {
+            if (!ad.classList.contains('adsbygoogle-loaded')) {
               (adsbygoogle = window.adsbygoogle || []).push({});
-            });
-          } catch (e) {
-            console.warn("AdSense yüklenemedi:", e);
-          }
-        }, 100); // küçük gecikme = layout tamamlandı
+            }
+          });
+        } catch (e) {
+          console.warn("AdSense yüklenemedi:", e);
+        }
+      }, 100);
 
-        // Reveal efektleri
-        ScrollReveal().reveal('[data-sr]', {
-          distance: '30px',
-          origin: 'bottom',
-          opacity: 0,
-          duration: 800,
-          interval: 120,
-          reset: false
-        });
-      }, 300);
-    });
+      // ScrollReveal
+      ScrollReveal().reveal('[data-sr]', {
+        distance: '30px',
+        origin: 'bottom',
+        opacity: 0,
+        duration: 800,
+        interval: 120,
+        reset: false
+      });
+    }, 300);
   });
-
-  // Progress bar scroll
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = (scrollTop / docHeight) * 100;
-    document.getElementById('progressBar').style.width = `${scrolled}%`;
-  });
+});
 </script>
 </body>
 </html>
