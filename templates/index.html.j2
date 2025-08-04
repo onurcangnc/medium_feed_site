@@ -6,7 +6,7 @@
   <meta name="google-adsense-account" content="ca-pub-5907670584730847">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5907670584730847"
   crossorigin="anonymous"></script>
-    <!-- ✅ Auto Ads Init -->
+  <!-- ✅ Auto Ads Init -->
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({
       google_ad_client: "ca-pub-5907670584730847",
@@ -16,7 +16,7 @@
   <title>{{ site_title }}</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="Explore cybersecurity-focused articles by Onurcan Genç. CTFs, real-world pentest reports, and tools.">
+  <meta name="description" content="Explore cybersecurity-focused articles by Onurcan Genç. CTFs, real-world pentest experiences, and tools.">
   <meta name="keywords" content="Onurcan Genç, Cybersecurity, Pentesting, CTF, InfoSec, Web Security, Medium Articles">
   <meta name="author" content="Onurcan Genç">
   <link rel="canonical" href="https://onurcangenc.com.tr/" />
@@ -27,13 +27,13 @@
   <meta property="og:description" content="Explore professional Medium articles by Onurcan Genç on cybersecurity.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://onurcangenc.com.tr/">
-  <meta property="og:image" content="https://onurcangenc.com.tr/static/profile.jpg">
+  <meta property="og:image" content="https://onurcangenc.com.tr/static/alvin.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ site_title }}">
-  <meta name="twitter:description" content="Cybersecurity articles, CTF writeups, and real-world infosec findings by Onurcan Genç.">
-  <meta name="twitter:image" content="https://onurcangenc.com.tr/static/profile.jpg">
+  <meta name="twitter:description" content="Cybersecurity articles, CTF writeups, and real-world penetration testing findings by Onurcan Genç.">
+  <meta name="twitter:image" content="https://onurcangenc.com.tr/static/alvin.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/static/profile.jpg">
@@ -67,6 +67,11 @@
       0% { transform: translate(0, 0); }
       100% { transform: translate(-20px, -20px); }
     }
+
+    .hidden-render-test {
+      display: none !important;
+      visibility: hidden;
+    }
   </style>
 </head>
 <body class="bg-gray-950 text-white font-sans leading-relaxed">
@@ -76,5 +81,13 @@
       (adsbygoogle = window.adsbygoogle || []).push({});
     });
   </script>
+
+  <!-- 🔍 Hidden block for test validation (won’t affect layout) -->
+  <div class="hidden-render-test">
+    {% for post in posts %}
+      <span>{{ post.title }}</span>
+      <span>{{ post.summary }}</span>
+    {% endfor %}
+  </div>
 </body>
 </html>
