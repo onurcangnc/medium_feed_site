@@ -50,6 +50,11 @@ jobs:
         run: pip install -r requirements.txt
       - name: Generate RSS HTML
         run: python main.py
+      - name: Debug Output Directory
+        run: |
+          echo "Listing output directory:"
+          ls -l output || echo "output/ not found"
+
 
   deploy-site:
     name: 🚢 Deploy to GitHub Pages
@@ -81,7 +86,3 @@ jobs:
           git add .
           git commit -m "🚀 Deploy GitHub Pages"
           git push -f origin gh-pages
-      - name: Debug Output Folder
-        run: |
-          echo "Listing output/"
-          ls -l output || echo "output/ not found"
