@@ -8,8 +8,15 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 # Ayarlar
 FEED_URL = "https://onurcangencbilkent.medium.com/feed"
 OUTPUT_DIR = "output"
-POSTS_PER_PAGE = 6
+POSTS_PER_PAGE = 10
 SITE_TITLE = "Onurcan Genç | Medium Articles"
+
+env = Environment(
+    loader=FileSystemLoader("templates"),
+    autoescape=select_autoescape(['html', 'xml', 'j2']),
+    extensions=["jinja2.ext.do"]  # ✅ Add this line
+)
+
 
 # Thumbnail çıkar
 def extract_thumbnail(summary_html):
