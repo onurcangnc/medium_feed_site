@@ -24,6 +24,7 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      # Tailwind CLI indirme ve çalışma
       - name: Download TailwindCSS CLI
         run: |
           curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
@@ -34,26 +35,29 @@ jobs:
       - name: Run Tailwind Build
         run: ./bin/tailwindcss -i input.css -o static/output.css --minify
 
-
-
       # ✅ Test utils
       - name: Run Utility Function Tests
         run: PYTHONPATH=. pytest tests/test_utils.py -k "thumbnail_extraction or strip_tags_removes_html"
 
-      # ✅ Test template render (real feed)
+      # ✅ Template test (real feed)
       - name: Run Template Render Test
         run: PYTHONPATH=. pytest tests/test_template.py -k "test_real_feed_rendering"
 
-      # ✅ Build RSS site
+      # ✅ HTML üretimi
       - name: Generate RSS HTML
         run: python main.py
 
+      # 📁 Debug log
       - name: Debug Output Directory
         run: |
           echo "Listing output directory:"
           ls -l output || echo "output/ not found"
 
-      # ✅ Deploy to GitHub Pages (gh-pages branch)
+      # 🧹 Binary temizliği (önemli)
+      - name: Clean up any binary before commit
+        run: rm -f bin/tailwindcss
+
+      # 🚀 Deploy to GitHub Pages (gh-pages branch)
       - name: Deploy output/ to gh-pages branch
         run: |
           git config --global user.name "github-actions"
@@ -69,6 +73,7 @@ jobs:
           mv temp/* .
           rm -rf temp
           touch .nojekyll
-          git add .
+
+          git add index.html page/ static/ .nojekyll
           git commit -m "🚀 Deploy GitHub Pages"
           git push -f origin gh-pages
