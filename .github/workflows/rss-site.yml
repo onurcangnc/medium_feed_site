@@ -70,6 +70,7 @@ jobs:
           git checkout --orphan gh-pages
           git rm -rf .
           mv temp/* .
+          echo "onurcangenc.com.tr" > CNAME
           rm -rf temp
           touch .nojekyll
 
