@@ -32,6 +32,17 @@
   <link rel="icon" type="image/png" href="/static/profile.jpg">
   <link href="/static/output.css" rel="stylesheet" />
 
+  <script>
+  if (
+    localStorage.getItem('color-theme') === 'dark' ||
+    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+  </script>
+
   <!-- ScrollReveal.js -->
   <script src="https://unpkg.com/scrollreveal"></script>
 
@@ -164,14 +175,27 @@
     </div>
     {% endif %}
 
-    <!-- Newsletter CTA -->
+    <!-- Reach Out Section -->
     <div class="mt-12 p-6 bg-gray-800 rounded-xl text-center">
-      <h3 class="text-2xl font-semibold mb-2">Get the Latest Cybersecurity Insights</h3>
-      <p class="text-gray-300 mb-4">Get notified on new articles and tools</p>
-      <form action="https://your-mailchimp-url" method="post" target="_blank" class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <input type="email" name="EMAIL" placeholder="Your email" required class="px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Join Newsletter</button>
-      </form>
+      <h3 class="text-2xl font-semibold mb-2">Reach Out</h3>
+      <p class="text-gray-300 mb-4">Have a question or want to connect? Drop your email below.</p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <input 
+          type="email" 
+          id="userEmail"
+          placeholder="Your email" 
+          required 
+          class="px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+        
+        <button 
+          onclick="sendMailToMe()" 
+          class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Send Message
+        </button>
+      </div>
     </div>
 
     <!-- Footer Ad -->
@@ -190,20 +214,13 @@
 <script>
 
 // Kullanıcının tercih ettiği tema
-if (localStorage.getItem('theme') === 'light') {
-  document.documentElement.classList.remove('dark');
-}
-
-function toggleTheme() {
-  const html = document.documentElement;
-  if (html.classList.contains('dark')) {
-    html.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
+  if (
+    localStorage.getItem('color-theme') === 'dark' ||
+    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    document.documentElement.classList.add('dark');
   } else {
-    html.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  }
-}
+    document.documentElement.classList.remove('dark');
 
 function smoothScroll(e) {
   e.preventDefault();
@@ -212,6 +229,20 @@ function smoothScroll(e) {
     block: 'start'
   });
 }
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = localStorage.getItem('color-theme');
+
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    localStorage.setItem('color-theme', 'light');
+  } else {
+    html.classList.add('dark');
+    localStorage.setItem('color-theme', 'dark');
+  }
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   // 🔄 Skeleton ve içerik kontrolü
@@ -256,6 +287,20 @@ document.addEventListener("DOMContentLoaded", () => {
     reset: false
   });
 });
+
+function sendMailToMe() {
+  const email = document.getElementById('userEmail').value.trim();
+  if (!email) {
+    alert("Please enter your email address.");
+    return;
+  }
+
+  const subject = encodeURIComponent("Cybersecurity Contact via OnurcanGenc.com.tr");
+  const body = encodeURIComponent(`Hi I am Onurcan,\n\nMy email: ${email}\nDo not forget to contact with me...`);
+  const mailtoLink = `mailto:onurcangencbilkent@gmail.com?subject=${subject}&body=${body}`;
+
+  window.location.href = mailtoLink;
+}
 </script>
 
 </body>

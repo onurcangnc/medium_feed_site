@@ -9,6 +9,7 @@ module.exports = {
     './**/*.md',
     './**/*.json',
   ],
+  darkMode: 'class',
   theme: {
     extend: {},
   },
