@@ -75,6 +75,6 @@ jobs:
           rm -rf temp
           touch .nojekyll
 
-          git add index.html page/ static/ .nojekyll CNAME
+          git add index.html page/ static/ .nojekyll CNAME ads.txt
           git commit -m "🚀 Deploy GitHub Pages"
           git push -f origin gh-pages
