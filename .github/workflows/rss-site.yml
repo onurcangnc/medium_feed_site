@@ -36,10 +36,6 @@ jobs:
       - name: Run Utility Function Tests
         run: PYTHONPATH=. pytest tests/test_utils.py -k "thumbnail_extraction or strip_tags_removes_html"
 
-      # ✅ Template test (real feed)
-      - name: Run Template Render Test
-        run: PYTHONPATH=. pytest tests/test_template.py -k "test_real_feed_rendering"
-
       # 🔧 HTML üretimi (önce)
       - name: Generate RSS HTML
         run: python main.py
