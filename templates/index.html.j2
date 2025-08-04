@@ -98,7 +98,7 @@
           <p class="text-gray-300 mb-4">
             Discover writeups, tools, and real-world pentest reports from a cybersecurity researcher pushing the limits of InfoSec.
           </p>
-          <a href="#postsContainer">
+          <a href="#postsContainer" onclick=smoothScroll(event)>
             <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 hover:from-pink-500 hover:to-blue-600 text-white rounded-full font-medium shadow hover:shadow-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
               Explore Articles →
             </button>
@@ -115,7 +115,7 @@
     </div>
 
     <!-- Actual Posts -->
-    <div id="postsContainer" class="grid min-h-[300px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+    <div id="postsContainer" class="scroll-mt-32 grid min-h-[300px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
       {% for post in posts %}
       {% if loop.index != 0 and loop.index % 6 == 0 %}
       <div class="col-span-full">
@@ -188,6 +188,31 @@
 
  <!-- ✅ JS Enhancements -->
 <script>
+
+// Kullanıcının tercih ettiği tema
+if (localStorage.getItem('theme') === 'light') {
+  document.documentElement.classList.remove('dark');
+}
+
+function toggleTheme() {
+  const html = document.documentElement;
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+function smoothScroll(e) {
+  e.preventDefault();
+  document.querySelector('#postsContainer')?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // 🔄 Skeleton ve içerik kontrolü
   const skeleton = document.getElementById("skeletonLoader");
