@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run Utils Tests
-        run: pytest tests/test_utils.py -k "thumbnail_extraction or strip_tags_removes_html"
+        run: PYTHONPATH=. pytest tests/test_utils.py -k "thumbnail_extraction or strip_tags_removes_html"
 
   test-template:
     name: 🧱 Template Render Test
@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run Template Render Test
-        run: pytest tests/test_template.py -k "test_real_feed_rendering"
+        run: PYTHONPATH=. pytest tests/test_template.py -k "test_real_feed_rendering"
 
   build-site:
     name: 🚀 Build RSS HTML
