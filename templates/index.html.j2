@@ -55,7 +55,7 @@
           <option value="all">Show All Tags</option>
           {% set all_tags = posts | map(attribute='tags') | sum(start=[]) | unique %}
           {% for tag in all_tags %}
-            <option value="{{ tag }}">{{ tag }}</option>
+            <option value="{{ tag.term }}">{{ tag.term }}</option>
           {% endfor %}
         </select>
         <button onclick="toggleTheme()" class="text-sm bg-gray-700 px-3 py-1 rounded hover:bg-gray-600 focus:outline-none focus:ring">
@@ -103,7 +103,7 @@
           loading="lazy"></ins>
       </div>
       {% endif %}
-      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="{{ post.tags | join(',') }}">
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="{{ post.tags | map(attribute='term') | join(',') }}">
         {% if post.thumbnail %}
         <img src="{{ post.thumbnail }}" alt="{{ post.title }} cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
         {% endif %}
