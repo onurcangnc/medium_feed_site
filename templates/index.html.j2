@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
   <head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5907670584730847" crossorigin="anonymous"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ site_title }}</title>
@@ -10,6 +11,7 @@
     <meta name="keywords" content="Onurcan Genç, Cybersecurity, Pentesting, CTF, InfoSec, Web Security, Medium Articles">
     <meta name="author" content="Onurcan Genç">
     <link rel="canonical" href="https://onurcangenc.com.tr/" />
+    <meta name="robots" content="index, follow" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="{{ site_title }}">
@@ -65,18 +67,36 @@
     <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-90 shadow-sm border-b border-gray-800 backdrop-blur-md">
       <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <h1 class="text-xl font-bold text-blue-400">{{ site_title }}</h1>
-        <div class="space-x-4 hidden sm:block">
-          <a href="#" class="text-sm text-white hover:text-blue-400 transition">All</a>
-          <a href="#" class="text-sm text-white hover:text-blue-400 transition">Web</a>
-          <a href="#" class="text-sm text-white hover:text-blue-400 transition">Mobile</a>
-          <a href="#" class="text-sm text-white hover:text-blue-400 transition">CTFs</a>
-        </div>
+        
       </div>
     </nav>
 
-    <div class="max-w-7xl mx-auto px-4 py-12">
+    <main class="max-w-7xl mx-auto px-4 py-12">
+<!-- Banner Ad -->
+<div class="mb-6">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5907670584730847"
+       data-ad-slot="1234567890"
+       data-ad-format="horizontal"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for post in posts %}
+        {% if loop.index == 2 %}
+        <!-- In-feed Ad after 2nd post -->
+        <div class="sm:col-span-2 lg:col-span-3">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5907670584730847"
+               data-ad-slot="2345678901"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        {% endif %}
         <div class="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr>
           {% if post.thumbnail %}
           <img src="{{ post.thumbnail }}" alt="cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
@@ -112,7 +132,18 @@
         {% endfor %}
       </div>
       {% endif %}
-    </div>
+    
+<!-- Footer Native Ad -->
+<div class="mt-12">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5907670584730847"
+       data-ad-slot="3456789012"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+</main>
 
     <script>
       ScrollReveal().reveal('[data-sr]', {
