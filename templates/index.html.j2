@@ -87,11 +87,6 @@
            data-ad-format="horizontal"
            data-full-width-responsive="true"
            loading="lazy"></ins>
-      <script>
-        window.addEventListener("load", function () {
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        });
-      </script>
     </div>
 
     <!-- OG Preview Card -->
@@ -131,7 +126,6 @@
              data-ad-format="auto"
              data-full-width-responsive="true"
              loading="lazy"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
       {% endif %}
       <div class="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr>
@@ -189,56 +183,69 @@
            data-ad-format="auto"
            data-full-width-responsive="true"
            loading="lazy"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </main>
 
-  <!-- JS Enhancements -->
-  <script>
-    // Theme loader (prevents flicker)
-    (function () {
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark') document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-    })();
+ <!-- ✅ JS Enhancements -->
+<script>
+  // Theme loader (prevents flicker)
+  (function () {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  })();
 
-    function toggleTheme() {
-      const html = document.documentElement;
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    }
+  function toggleTheme() {
+    const html = document.documentElement;
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  }
 
-    // Reveal + Scroll animations
-    document.addEventListener("DOMContentLoaded", () => {
-      requestAnimationFrame(() => {
+  // Enhanced DOMContentLoaded
+  document.addEventListener("DOMContentLoaded", () => {
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        const skeleton = document.getElementById("skeletonLoader");
+        const container = document.getElementById("postsContainer");
+
+        if (skeleton) skeleton.style.display = "none";
+        if (container) {
+          container.classList.remove("hidden");
+          container.style.display = "";
+        }
+
+        // ✅ AdSense blokları görünür hale geldikten sonra push et
         setTimeout(() => {
-          const skeleton = document.getElementById("skeletonLoader");
-          const container = document.getElementById("postsContainer");
-          if (skeleton) skeleton.style.display = "none";
-          if (container) {
-            container.classList.remove("hidden");
-            container.style.display = "";
+          try {
+            const ads = document.querySelectorAll(".adsbygoogle");
+            ads.forEach(ad => {
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            });
+          } catch (e) {
+            console.warn("AdSense yüklenemedi:", e);
           }
+        }, 100); // küçük gecikme = layout tamamlandı
 
-          ScrollReveal().reveal('[data-sr]', {
-            distance: '30px',
-            origin: 'bottom',
-            opacity: 0,
-            duration: 800,
-            interval: 120,
-            reset: false
-          });
-        }, 300);
-      });
+        // Reveal efektleri
+        ScrollReveal().reveal('[data-sr]', {
+          distance: '30px',
+          origin: 'bottom',
+          opacity: 0,
+          duration: 800,
+          interval: 120,
+          reset: false
+        });
+      }, 300);
     });
+  });
 
-    // Progress bar scroll
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (scrollTop / docHeight) * 100;
-      document.getElementById('progressBar').style.width = `${scrolled}%`;
-    });
-  </script>
+  // Progress bar scroll
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (scrollTop / docHeight) * 100;
+    document.getElementById('progressBar').style.width = `${scrolled}%`;
+  });
+</script>
 </body>
 </html>
