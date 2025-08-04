@@ -14,9 +14,8 @@ SITE_TITLE = "Onurcan Genç | Medium Articles"
 env = Environment(
     loader=FileSystemLoader("templates"),
     autoescape=select_autoescape(['html', 'xml', 'j2']),
-    extensions=["jinja2.ext.do"]  # ✅ Add this line
+    extensions=["jinja2.ext.do"]
 )
-
 
 # Thumbnail çıkar
 def extract_thumbnail(summary_html):
@@ -39,10 +38,6 @@ def fetch_entries():
 # Sayfa oluştur
 def generate_pages(entries):
     total_pages = math.ceil(len(entries) / POSTS_PER_PAGE)
-    env = Environment(
-        loader=FileSystemLoader("templates"),
-        autoescape=select_autoescape(['html', 'xml', 'j2'])
-    )
     template = env.get_template("index.html.j2")
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
