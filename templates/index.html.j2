@@ -188,45 +188,50 @@
 
  <!-- ✅ JS Enhancements -->
 <script>
-// Enhanced DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      const skeleton = document.getElementById("skeletonLoader");
-      const container = document.getElementById("postsContainer");
+  // 🔄 Skeleton ve içerik kontrolü
+  const skeleton = document.getElementById("skeletonLoader");
+  const container = document.getElementById("postsContainer");
 
-      if (skeleton) skeleton.style.display = "none";
-      if (container) {
-        container.classList.remove("hidden");
-        container.style.display = "";
-      }
+  if (skeleton) skeleton.style.display = "none";
+  if (container) {
+    container.classList.remove("hidden");
+    container.style.display = "";
+  }
 
-      // ✅ Sadece yüklenmemiş reklamları push et
-      setTimeout(() => {
-        try {
-          const ads = document.querySelectorAll("ins.adsbygoogle");
-          ads.forEach(ad => {
-            if (!ad.classList.contains('adsbygoogle-loaded')) {
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            }
-          });
-        } catch (e) {
-          console.warn("AdSense yüklenemedi:", e);
+  // 🧠 IntersectionObserver ile reklamları sadece görünürken yükle
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const ad = entry.target;
+        if (!ad.classList.contains("adsbygoogle-loaded")) {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            ad.classList.add("adsbygoogle-loaded");
+            observer.unobserve(ad); // tekrar yüklenmesin
+          } catch (e) {
+            console.warn("AdSense yüklenemedi:", e);
+          }
         }
-      }, 100);
+      }
+    });
+  });
 
-      // ScrollReveal
-      ScrollReveal().reveal('[data-sr]', {
-        distance: '30px',
-        origin: 'bottom',
-        opacity: 0,
-        duration: 800,
-        interval: 120,
-        reset: false
-      });
-    }, 300);
+  document.querySelectorAll("ins.adsbygoogle").forEach(ad => {
+    observer.observe(ad);
+  });
+
+  // 🎉 ScrollReveal
+  ScrollReveal().reveal('[data-sr]', {
+    distance: '30px',
+    origin: 'bottom',
+    opacity: 0,
+    duration: 800,
+    interval: 120,
+    reset: false
   });
 });
 </script>
+
 </body>
 </html>
