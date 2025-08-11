@@ -8,7 +8,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-ZH3BBFL6YR');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -102,16 +101,6 @@
     <!-- Posts -->
     <div id="postsContainer" class="scroll-mt-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
       {% for post in posts %}
-      {% if loop.index != 0 and loop.index % 6 == 0 %}
-      <div class="col-span-full">
-        <ins class="adsbygoogle" style="display:block"
-          data-ad-client="ca-pub-5907670584730847"
-          data-ad-slot="2345678901"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-          loading="lazy"></ins>
-      </div>
-      {% endif %}
       <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="{{ post.tags | join(',') }}">
         {% if post.thumbnail %}
         <img src="{{ post.thumbnail }}" alt="{{ post.title }} cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
@@ -154,15 +143,6 @@
       </div>
     </div>
 
-    <!-- Footer Ad -->
-    <div class="mt-12">
-      <ins class="adsbygoogle" style="display:block"
-        data-ad-client="ca-pub-5907670584730847"
-        data-ad-slot="3456789012"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-        loading="lazy"></ins>
-    </div>
   </main>
 
 <script>
@@ -204,25 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("postsContainer");
   container.classList.remove("hidden");
   container.style.display = "";
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const ad = entry.target;
-        if (!ad.classList.contains("adsbygoogle-loaded")) {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            ad.classList.add("adsbygoogle-loaded");
-            observer.unobserve(ad);
-          } catch (e) {
-            console.warn("AdSense yüklenemedi:", e);
-          }
-        }
-      }
-    });
-  });
-
-  document.querySelectorAll("ins.adsbygoogle").forEach(ad => observer.observe(ad));
 
   ScrollReveal().reveal('[data-sr]', {
     distance: '30px',
