@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH3BBFL6YR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZH3BBFL6YR');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-adsense-account" content="ca-pub-5907670584730847">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5907670584730847" crossorigin="anonymous"></script>
+  <title>Onurcan Genç | Medium Articles</title>
+  <meta name="description" content="Explore cybersecurity-focused articles by Onurcan Genç.">
+  <meta name="keywords" content="Onurcan Genç, Cybersecurity, Pentesting, InfoSec">
+  <meta name="author" content="Onurcan Genç">
+  <link rel="canonical" href="https://onurcangenc.com.tr/" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Onurcan Genç | Medium Articles">
+  <meta property="og:description" content="Explore professional Medium articles by Onurcan Genç.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onurcangenc.com.tr/">
+  <meta property="og:image" content="https://onurcangenc.com.tr/static/profile.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Onurcan Genç | Medium Articles">
+  <meta name="twitter:description" content="Cybersecurity articles and CTFs by Onurcan Genç.">
+  <meta name="twitter:image" content="https://onurcangenc.com.tr/static/profile.jpg">
+  <link rel="icon" type="image/png" href="/static/profile.jpg">
+  <link href="/static/output.css" rel="stylesheet" />
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(34,193,195,0.08), rgba(253,187,45,0.05));
+      z-index: -1;
+      animation: bgparallax 30s ease-in-out infinite alternate;
+    }
+    @keyframes bgparallax {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-20px, -20px); }
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-white font-sans leading-relaxed">
+
+  <!-- Progress Bar -->
+  <div id="progressBar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-pink-500 z-[9999] transition-all duration-200" style="width: 0%;"></div>
+
+  <nav class="sticky top-0 z-50 bg-gray-900 bg-opacity-90 shadow-sm border-b border-gray-800 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+      <h1 class="text-xl font-bold text-blue-400">Onurcan Genç | Medium Articles</h1>
+      <div class="flex gap-3 items-center ml-auto">
+        <select 
+          onchange="filterPosts(this.value)" 
+          class="text-sm px-3 py-1 bg-gray-800 text-white border border-gray-600 rounded focus:outline-none focus:ring"
+        >
+          <option value="all">Show All Tags</option>
+          
+          
+            <option value="iot">iot</option>
+          
+            <option value="uav">uav</option>
+          
+            <option value="drones">drones</option>
+          
+            <option value="drone-photography">drone-photography</option>
+          
+            <option value="dji">dji</option>
+          
+            <option value="offensive-security">offensive-security</option>
+          
+            <option value="red-teaming">red-teaming</option>
+          
+            <option value="penetration-testing">penetration-testing</option>
+          
+            <option value="hackthebox">hackthebox</option>
+          
+            <option value="cybersecurity">cybersecurity</option>
+          
+            <option value="information-security">information-security</option>
+          
+            <option value="china">china</option>
+          
+            <option value="information-technology">information-technology</option>
+          
+            <option value="digital-transformation">digital-transformation</option>
+          
+            <option value="hackthebox-writeup">hackthebox-writeup</option>
+          
+            <option value="capture-the-flag">capture-the-flag</option>
+          
+            <option value="sızma-testi">sızma-testi</option>
+          
+            <option value="software-testing">software-testing</option>
+          
+            <option value="software-development">software-development</option>
+          
+            <option value="ai-security">ai-security</option>
+          
+            <option value="red-team">red-team</option>
+          
+            <option value="cyberthreat-intelligence">cyberthreat-intelligence</option>
+          
+            <option value="cyber-security-awareness">cyber-security-awareness</option>
+          
+            <option value="intelligence">intelligence</option>
+          
+            <option value="application-security">application-security</option>
+          
+            <option value="mobileapplicationpentest">mobileapplicationpentest</option>
+          
+            <option value="devsecops">devsecops</option>
+          
+            <option value="ci-cd-pipeline">ci-cd-pipeline</option>
+          
+            <option value="prompting-technique">prompting-technique</option>
+          
+            <option value="prompt-injection-attack">prompt-injection-attack</option>
+          
+        </select>
+        <button onclick="toggleTheme()" class="text-sm bg-gray-700 px-3 py-1 rounded hover:bg-gray-600 focus:outline-none focus:ring">
+          Toggle Theme
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-4 py-12">
+
+    <!-- OG Preview -->
+    <section class="-mt-12 mb-16">
+      <div class="rounded-xl overflow-hidden shadow-lg bg-gray-900 flex flex-col lg:flex-row items-center">
+        <img src="/static/profile.jpg" alt="Onurcan Genç OG preview" class="w-40 h-40 rounded-full object-cover mx-auto mt-6" />
+        <div class="p-6 flex flex-col items-center text-center space-y-4">
+          <h2 class="text-2xl font-bold text-white">Welcome to Onurcan Genç’s Cybersecurity Article Page</h2>
+          <p class="text-gray-300">Discover writeups, tools, and real-world pentest experiences.</p>
+          <a href="#postsContainer" onclick="smoothScroll(event)">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 hover:from-pink-500 hover:to-blue-600 text-white rounded-full font-medium shadow transition focus:ring-2 focus:ring-blue-500">
+              Explore Articles →
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skeleton Loader -->
+    <div id="skeletonLoader" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 p-6 rounded-xl animate-pulse h-60"></div>
+      <div class="bg-gray-800 p-6 rounded-xl animate-pulse h-60"></div>
+      <div class="bg-gray-800 p-6 rounded-xl animate-pulse h-60"></div>
+    </div>
+
+    <!-- Posts -->
+    <div id="postsContainer" class="scroll-mt-32 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="iot,uav,drones,drone-photography,dji">
+        
+        <img src="https://cdn-images-1.medium.com/max/664/1*6sjp83642u70Hy5Bb6WNAg.jpeg" alt="Meeting the Sky: My 1 Month UAV Experience cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Sun, 03 Aug 2025 01:43:08 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">Meeting the Sky: My 1 Month UAV Experience</h2>
+          <p class="text-sm text-gray-300 mb-4">I shared my experience with the DJI Mini 4 Pro, covering flight prep, legal challenges and a wildfire response project using AWS.Continue reading on OSINT Team »</p>
+          <a href="https://osintteam.blog/meeting-the-sky-my-1-month-uav-experience-8726739ad2a5?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="offensive-security,red-teaming,penetration-testing,hackthebox,cybersecurity">
+        
+        <img src="https://cdn-images-1.medium.com/max/1024/1*R8qIFTXb7_dX4DMkO4DppQ.png" alt="HTB Access | Anonymous FTP, MDB Extraction &amp; Nishang Reverse Shell cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Tue, 15 Jul 2025 00:35:18 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">HTB Access | Anonymous FTP, MDB Extraction &amp; Nishang Reverse Shell</h2>
+          <p class="text-sm text-gray-300 mb-4">Learn how to establish reverse shell in AV enabled systems without running executables.Continue reading on System Weakness »</p>
+          <a href="https://systemweakness.com/htb-access-anonymous-ftp-mdb-extraction-nishang-reverse-shell-2ded1da34fa1?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="information-security,china,cybersecurity,information-technology,digital-transformation">
+        
+        <img src="https://cdn-images-1.medium.com/max/1536/1*dCgTsQ-IuPAZnQB4E2r1PA.png" alt="Shining Dragon: The Digital Perfection Behind The Great Wall cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Mon, 07 Jul 2025 20:36:12 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">Shining Dragon: The Digital Perfection Behind The Great Wall</h2>
+          <p class="text-sm text-gray-300 mb-4">In this article, I provide large scope of my examinations during my trip &amp;amp; most impressed views about ChinaContinue reading on OSINT Team »</p>
+          <a href="https://osintteam.blog/shining-dragon-the-digital-perfection-behind-the-great-wall-e9171719b1f8?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="cybersecurity,hackthebox-writeup,capture-the-flag,sızma-testi,penetration-testing">
+        
+        <img src="https://cdn-images-1.medium.com/max/600/1*vauPuJMLMsjG9Q3Bn01roQ.jpeg" alt="Academy | Parameter Tampering &amp; Manual/Automated &amp; Binary Exploitation cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Fri, 20 Jun 2025 23:05:04 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">Academy | Parameter Tampering &amp; Manual/Automated &amp; Binary Exploitation</h2>
+          <p class="text-sm text-gray-300 mb-4">Learn manual&amp;amp;automated and binary exploitation techniques. Moreover, understand the usage of parameter tampering via BurpsuiteContinue reading on System ...</p>
+          <a href="https://systemweakness.com/academy-parameter-tampering-manual-automated-binary-exploitation-b9068a4e18d1?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="cybersecurity,offensive-security,penetration-testing,software-testing,software-development">
+        
+        <img src="https://cdn-images-1.medium.com/max/735/1*409OaYzWA5W0O8mHVmzuMQ.jpeg" alt="Software Testing VS Penetration Testing cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Fri, 20 Jun 2025 02:38:06 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">Software Testing VS Penetration Testing</h2>
+          <p class="text-sm text-gray-300 mb-4">Learn &amp;amp; recognize the differences of SW &amp;amp; Penetration TestingContinue reading on OSINT Team »</p>
+          <a href="https://osintteam.blog/software-testing-vs-penetration-testing-7f67af5ef971?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="red-teaming,offensive-security,ai-security,cybersecurity,red-team">
+        
+        <img src="https://cdn-images-1.medium.com/max/736/1*Fl5x-EvQHK0IfJuKj6GrVQ.jpeg" alt="LLM Guardrail Bypass: Practical Attacks with LLMBUS cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Sun, 15 Jun 2025 21:15:43 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">LLM Guardrail Bypass: Practical Attacks with LLMBUS</h2>
+          <p class="text-sm text-gray-300 mb-4">Using the LLMBus tool, I demonstrate how legacy models like GPT-3.5-Turbo can be manipulated with various methods.Continue reading on OSINT Team »</p>
+          <a href="https://osintteam.blog/llm-guardrail-bypass-practical-attacks-with-llmbus-27b4d0dea36d?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="cyberthreat-intelligence,cyber-security-awareness,offensive-security,cybersecurity,intelligence">
+        
+        <img src="https://cdn-images-1.medium.com/max/600/1*MehYV5EetPQeER4CHa6EYQ.jpeg" alt="Credential Leak Intelligence | Elastic Leak Searcher cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Thu, 05 Jun 2025 23:35:29 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">Credential Leak Intelligence | Elastic Leak Searcher</h2>
+          <p class="text-sm text-gray-300 mb-4">Learn how to build Elastic Search based, a Flask + Elasticsearch tool for querying massive credential leaks efficiently.Continue reading on OSINT Team »</p>
+          <a href="https://osintteam.blog/credential-leak-intelligence-elastic-leak-searcher-e3572ca007cf?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="penetration-testing,cybersecurity,application-security,offensive-security,mobileapplicationpentest">
+        
+        <img src="https://cdn-images-1.medium.com/max/736/1*yzfjU7VxwPBANm8_ZXJ2Gw.jpeg" alt="Bypassing Security Mechanisms in Restricted Mobile Applications cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Thu, 08 May 2025 21:23:13 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">Bypassing Security Mechanisms in Restricted Mobile Applications</h2>
+          <p class="text-sm text-gray-300 mb-4">Detect &amp;amp; Evade Mobile Restricted EnvironmentsContinue reading on OSINT Team »</p>
+          <a href="https://osintteam.blog/bypassing-security-mechanisms-in-restricted-mobile-applications-173b6059c0f0?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="offensive-security,devsecops,penetration-testing,ci-cd-pipeline,cybersecurity">
+        
+        <img src="https://cdn-images-1.medium.com/max/600/1*HVjC2wynZqWPPZuySCCNzw.jpeg" alt="CI/CD Driven Passive Reconnaissance: A DevSecOps Approach to External Attack Surface Enumeration cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Thu, 24 Apr 2025 23:11:56 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">CI/CD Driven Passive Reconnaissance: A DevSecOps Approach to External Attack Surface Enumeration</h2>
+          <p class="text-sm text-gray-300 mb-4">Learn how a CI/CD-driven passive reconnaissance framework integrated for penetration testing routines.Continue reading on OSINT Team »</p>
+          <a href="https://osintteam.blog/ci-cd-driven-passive-reconnaissance-a-devsecops-approach-to-external-attack-surface-enumeration-22d4fa3417d7?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+      <div class="post-card bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1 group" data-sr data-tags="cybersecurity,penetration-testing,red-teaming,prompting-technique,prompt-injection-attack">
+        
+        <img src="https://cdn-images-1.medium.com/max/736/1*gkyF04sghlzz3kZTdIjsFg.jpeg" alt="A Real-World Prompt Injection Story | How “Ayşe” Became an Insider Threat cover image" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300">
+        
+        <div class="p-6">
+          <div class="text-xs text-gray-400 mb-1">Sun, 13 Apr 2025 17:17:53 GMT</div>
+          <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300">A Real-World Prompt Injection Story | How “Ayşe” Became an Insider Threat</h2>
+          <p class="text-sm text-gray-300 mb-4">Learn how to manipulate old LLM models in order to conduct efficient penetration testing engagementsContinue reading on OSINT Team »</p>
+          <a href="https://osintteam.blog/a-real-world-prompt-injection-story-how-ay%C5%9Fe-became-an-insider-threat-2a757c97995a?source=rss-d00666e80311------2" target="_blank">
+            <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-full font-medium transition hover:from-pink-500 hover:to-blue-600 focus:ring-2 focus:ring-blue-500">
+              Read Article →
+            </button>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+
+    
+
+    <!-- Contact -->
+    <div class="mt-12 p-6 bg-gray-800 rounded-xl text-center">
+      <h3 class="text-2xl font-semibold mb-2">Reach Out</h3>
+      <p class="text-gray-300 mb-4">Have a question or want to connect? Drop your email below.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <input type="email" id="userEmail" placeholder="Your email" required class="px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button onclick="sendMailToMe()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Send Message</button>
+      </div>
+    </div>
+
+  </main>
+
+<script>
+if (localStorage.getItem('theme') === 'light') {
+  document.documentElement.classList.remove('dark');
+}
+
+function toggleTheme() {
+  const html = document.documentElement;
+  if (html.classList.contains('dark')) {
+    html.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+function smoothScroll(e) {
+  e.preventDefault();
+  document.querySelector('#postsContainer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function filterPosts(tag) {
+  const cards = document.querySelectorAll('.post-card');
+  if (tag === 'all') {
+    cards.forEach(card => card.style.display = 'block');
+    return;
+  }
+  cards.forEach(card => {
+    const tags = card.dataset.tags?.toLowerCase() || '';
+    const match = tags.split(',').map(t => t.trim()).includes(tag.toLowerCase());
+    card.style.display = match ? 'block' : 'none';
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("skeletonLoader").style.display = "none";
+  const container = document.getElementById("postsContainer");
+  container.classList.remove("hidden");
+  container.style.display = "";
+
+  ScrollReveal().reveal('[data-sr]', {
+    distance: '30px',
+    origin: 'bottom',
+    opacity: 0,
+    duration: 800,
+    interval: 120,
+    reset: false
+  });
+});
+
+function sendMailToMe() {
+  const email = document.getElementById('userEmail').value.trim();
+  if (!email) return alert("Please enter your email address.");
+  const subject = encodeURIComponent("Cybersecurity Contact via OnurcanGenc.com.tr");
+  const body = encodeURIComponent(`Hi I am Onurcan,\n\nMy email: ${email}\nDo not forget to contact with me...`);
+  window.location.href = `mailto:onurcangencbilkent@gmail.com?subject=${subject}&body=${body}`;
+}
+</script>
+</body>
+</html>

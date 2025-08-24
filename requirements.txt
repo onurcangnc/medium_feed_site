@@ -1,6 +1,0 @@
-requests
-beautifulsoup4
-jinja2
-feedparser
-pytest
-lxml

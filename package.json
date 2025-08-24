@@ -1,9 +1,0 @@
-{
-  "name": "rss-tailwind-site",
-  "scripts": {
-    "build": "npx tailwindcss -i input.css -o static/output.css --minify"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.3.0"
-  }
-}
