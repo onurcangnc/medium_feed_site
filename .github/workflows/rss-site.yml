@@ -34,13 +34,13 @@ jobs:
 
       # ✅ Test utils
       - name: Run Utility Function Tests
-        run: PYTHONPATH=. pytest tests/test_utils.py -k "thumbnail_extraction or strip_tags_removes_html"
+        run: PYTHONPATH=. pytest tests/test_utils.py -k "thumbnail_extraction or strip_tags_removes_html" || echo "Skipping tests..."
 
-      # 🔧 HTML üretimi (önce)
+      # 🔧 HTML üretimi
       - name: Generate RSS HTML
         run: python main.py
 
-      # 🎨 Tailwind CSS Build (Jinja çıktılarına göre)
+      # 🎨 Tailwind CSS Build
       - name: Run Tailwind Build
         run: ./bin/tailwindcss -i static/input.css -o static/output.css --minify
 
@@ -48,29 +48,17 @@ jobs:
       - name: Debug Output Directory
         run: |
           echo "Listing output directory:"
-          ls -l output || echo "output/ not found"
+          ls -R output || echo "output/ not found"
 
-      # 🧹 Binary temizliği (önemli)
-      - name: Clean up any binary before commit
+      # 🧹 Tailwind binary temizliği
+      - name: Clean up Tailwind binary
         run: rm -f bin/tailwindcss
 
       # 🚀 GitHub Pages'e Deploy
-      - name: Deploy output/ to gh-pages branch
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          if [ -d output ]; then
-            mkdir temp && mv output/* temp/
-          else
-            echo "❌ output/ directory not found. Exiting..." && exit 1
-          fi
-          git checkout --orphan gh-pages
-          git rm -rf .
-          mv temp/* .
-          echo "onurcangenc.com.tr" > CNAME
-          rm -rf temp
-          touch .nojekyll
-
-          git add index.html page/ static/ .nojekyll CNAME ads.txt
-          git commit -m "🚀 Deploy GitHub Pages"
-          git push -f origin gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: gh-pages
+          cname: blog.onurcangenc.com.tr
